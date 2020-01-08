@@ -216,10 +216,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   abilityKeys:
   - Fire1
-  - a
+  - Fire2
   abilities:
-  - {fileID: 11400000, guid: 11698b043f5eb674ca204d3f840ce124, type: 2}
   - {fileID: 11400000, guid: 89cff660abbfc724cb992259b16bceab, type: 2}
+  - {fileID: 11400000, guid: 11698b043f5eb674ca204d3f840ce124, type: 2}
 --- !u!1 &181880707
 GameObject:
   m_ObjectHideFlags: 0
