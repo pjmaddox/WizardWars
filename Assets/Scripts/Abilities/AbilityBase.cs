@@ -15,6 +15,7 @@ public abstract class AbilityBase : ScriptableObject
     public ParticleSystem effect;
     public AudioClip abilitySound;
 
-    public abstract void Initialize();
+
+    public abstract void Initialize(GameObject obj);
     public abstract void Activate();
 }

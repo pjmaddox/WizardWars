@@ -7,13 +7,13 @@ public class JumpAbility : AbilityBase
 {
     public int stacks = 1;
 
-    public override void Initialize()
+    public override void Initialize(GameObject obj)
     {
-
+        int x = 0;
     }
 
     public override void Activate()
     {
-
-    }
+        int x = 0;
+}
 }

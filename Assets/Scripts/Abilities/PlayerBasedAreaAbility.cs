@@ -9,7 +9,7 @@ public class PlayerBasedAreaAbility : AbilityBase
     public float diameter = 2f;
     
 
-    public override void Initialize()
+    public override void Initialize(GameObject obj)
     {
 
     }

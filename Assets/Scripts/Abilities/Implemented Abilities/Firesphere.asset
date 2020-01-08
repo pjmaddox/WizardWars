@@ -10,9 +10,9 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 76ef7c2970fd73649ae6c6e773b93540, type: 3}
-  m_Name: Fireball
+  m_Name: Firesphere
   m_EditorClassIdentifier: 
-  abilityName: Fireball
+  abilityName: Firesphere
   baseCooldown: 3
   castTime: 0.5
   targetKnockbackForce: 200
@@ -22,6 +22,6 @@ MonoBehaviour:
   effect: {fileID: 3421292615638379270, guid: 06d8bc25d1066bb469bcdd0f95d4a47a, type: 3}
   abilitySound: {fileID: 0}
   projectileForce: 500
-  projectileToSpawn: {fileID: 9135877776723079477, guid: 0efeee1ea4ab66849b8a5d33caa4e58a,
+  projectileToSpawn: {fileID: 712220717463636895, guid: 7879bb11452426b44b8a2ea918fedd8c,
     type: 3}
   launcher: {fileID: 0}
