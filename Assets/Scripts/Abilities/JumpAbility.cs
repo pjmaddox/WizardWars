@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-[CreateAssetMenu(menuName = "Abilities/JumpAbility")]
+[CreateAssetMenu(menuName = "Ability/JumpAbility")]
 public class JumpAbility : AbilityBase
 {
     public int stacks = 1;
