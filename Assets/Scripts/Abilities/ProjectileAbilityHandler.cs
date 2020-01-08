@@ -11,9 +11,9 @@ public class ProjectileAbilityHandler : MonoBehaviour
     public Transform projectileSpawnPoint;
     [HideInInspector] public float projectileForce = 300f;
 
-    public void Launch()
+    public void Launch(GameObject toSpawn)
     {
-        GameObject cloneProjectile = Instantiate(projectile, projectileSpawnPoint.position, transform.rotation);
+        GameObject cloneProjectile = Instantiate(toSpawn, projectileSpawnPoint.position, transform.rotation);
         Rigidbody cloneRB = cloneProjectile.GetComponent<Rigidbody>();
         cloneRB.AddForce(projectileSpawnPoint.transform.forward * projectileForce);
         
