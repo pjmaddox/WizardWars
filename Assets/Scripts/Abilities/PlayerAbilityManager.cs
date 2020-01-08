@@ -2,9 +2,14 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ProjectileAbilityManager : MonoBehaviour
+public class PlayerAbilityManager : MonoBehaviour
 {
+    //ToDo: Create or borrow serializable dictionary values so theses can be modified in the editor
     public Dictionary<string, AbilityBase> activationKeyToProjectileDictionary = new Dictionary<string, AbilityBase>();
+
+    //ToDo: these two would be the alternatives, or creating our own solution, which would be a serializable class of key / value pairs
+    public List<string> abilityKeys = new List<string>();
+    public List<AbilityBase> abilities = new List<AbilityBase>();
 
     void Start()
     {
