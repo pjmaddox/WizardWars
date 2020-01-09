@@ -9,13 +9,23 @@ public class ProjectileAbilityHandler : MonoBehaviour
 
     [HideInInspector] public GameObject projectile;
     public Transform projectileSpawnPoint;
+    
     [HideInInspector] public float projectileForce = 300f;
 
-    public void Launch(GameObject toSpawn)
+    public void Launch(ProjectileAbility ability)
     {
-        GameObject cloneProjectile = Instantiate(toSpawn, projectileSpawnPoint.position, transform.rotation);
+
+        GameObject cloneProjectile = Instantiate(ability.projectileToSpawn, projectileSpawnPoint.position, transform.rotation);
         Rigidbody cloneRB = cloneProjectile.GetComponent<Rigidbody>();
-        cloneRB.AddForce(projectileSpawnPoint.transform.forward * projectileForce);
-        
+        cloneRB.AddForce(projectileSpawnPoint.transform.forward * ability.projectileForce);
+        Destroy(cloneProjectile, 5f);
+        ProjectileAbilityStats pas = cloneProjectile.GetComponent<ProjectileAbilityStats>();
+        pas.force = ability.projectileForce;
+        pas.damage = ability.damage;
+        cloneProjectile.tag = "ability";
     }
+
+
+
+
 }

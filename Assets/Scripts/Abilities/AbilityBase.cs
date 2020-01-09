@@ -10,6 +10,7 @@ public abstract class AbilityBase : ScriptableObject
     public float targetKnockbackForce = 0f;
     public float casterKnockbackForce = 0f;
     public int maxStacks = 1;
+    public float damage = 0f;
 
     public Sprite abilitySprite;
     public ParticleSystem effect;
