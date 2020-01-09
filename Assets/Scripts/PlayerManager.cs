@@ -18,6 +18,12 @@ public class PlayerManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        Debug.Log("Current health is: " + (int)currentHealth);
+        currentHealth -= Time.deltaTime;
+
+        if (currentHealth <= 0)
+        {
+            Debug.Log("PLAYER IS DEAD");
+        }
     }
 }
