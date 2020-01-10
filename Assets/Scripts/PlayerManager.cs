@@ -29,9 +29,12 @@ public class PlayerManager : MonoBehaviour
 
     public void OnTriggerEnter(Collider other)
     {
+        Debug.Log(other.name);
         if (other.CompareTag("ability"))
         {
+            Debug.Log("got here");
             ProjectileAbilityStats pas = other.GetComponent<ProjectileAbilityStats>();
+            
             if (pas)
             {
                 currentHealth -= pas.damage;
