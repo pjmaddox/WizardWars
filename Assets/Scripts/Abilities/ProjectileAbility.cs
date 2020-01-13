@@ -25,13 +25,12 @@ public class ProjectileAbility : AbilityBase
 
     public override void Activate()
     {
-        Debug.Log($"Pew Pew! Projectile Ability with name: {this.abilityName} was triggered!");
-        //This should call the launcher.fire() or something, or maybe just handle everything here - I don't even know why we need that in particular
-        
+        Debug.Log($"{this.abilityName} was triggered!");       
         
         launcher.Launch(this);
-        this.effect.Play();
+        if(this.effect != null)
+        {
+            this.effect.Play();
+        }
     }
-
-
 }

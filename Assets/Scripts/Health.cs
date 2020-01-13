@@ -4,26 +4,38 @@ using UnityEngine;
 
 public class Health : MonoBehaviour
 {
-    private PlayerAbilityManager abilityManager;
-
-
     public float maxHealth = 100;
     public float currentHealth;
+
     // Start is called before the first frame update
     void Start()
     {
+        Debug.Log("Hit parent Start()");
         currentHealth = maxHealth;
     }
 
-    // Update is called once per frame
-    void Update()
+    public void TakeDamage(float amount)
     {
-        Debug.Log("Current health is: " + (int)currentHealth);
-        currentHealth -= Time.deltaTime;
+        ChangeHealth(-amount);
+    }
 
-        if (currentHealth <= 0)
+    public void Heal(float amount)
+    {
+        ChangeHealth(amount);
+    }
+
+    public virtual void ChangeHealth(float delta)
+    {
+        this.currentHealth += delta;
+        DestroyOnDeath();
+    }
+
+    public virtual void DestroyOnDeath()
+    {
+        if(this.currentHealth <= 0) 
         {
-            Debug.Log("PLAYER IS DEAD");
+            Debug.Log($"{this.gameObject.name} has been destroyed!");
+            Destroy(this.gameObject);
         }
     }
 }

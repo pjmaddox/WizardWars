@@ -16,13 +16,39 @@ public class ProjectileAbilityHandler : MonoBehaviour
     {
 
         GameObject cloneProjectile = Instantiate(ability.projectileToSpawn, projectileSpawnPoint.position, transform.rotation);
+
         Rigidbody cloneRB = cloneProjectile.GetComponent<Rigidbody>();
         cloneRB.AddForce(projectileSpawnPoint.transform.forward * ability.projectileForce);
+        
         Destroy(cloneProjectile, 5f);
+
         ProjectileAbilityStats pas = cloneProjectile.GetComponent<ProjectileAbilityStats>();
         pas.force = ability.projectileForce;
         pas.damage = ability.damage;
         cloneProjectile.tag = "ability";
+        
+        //Add ProjectileAbilityCollisionHandler to projectile?
+        System.Action<Collision, GameObject, ProjectileAbilityStats> collisionHandlerFunction = OnCollide;
+        var onCollisionScript = cloneProjectile.AddComponent<ProjectileAbilityCollisionHandler>();
+        onCollisionScript.PrimeProjectile(collisionHandlerFunction, pas);
+    }
+
+    //This is a bit of over-engineering but 
+    private void OnCollide(Collision other, GameObject hit, ProjectileAbilityStats stats)
+    {
+        //Do each thing you need to do when this impacts something
+        
+        //Try to apply damage to thing if it has health
+        //Deal OnHit damage
+        var targetHealth = other.gameObject.GetComponent<Health>();
+        if(targetHealth != null)
+        {
+            targetHealth.TakeDamage(stats.damage);
+        }
+
+        //Generate Explosion?
+        //Apply knockback in area?
+        //what else?
     }
 
 
