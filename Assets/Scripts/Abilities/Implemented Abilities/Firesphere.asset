@@ -18,8 +18,9 @@ MonoBehaviour:
   targetKnockbackForce: 200
   casterKnockbackForce: 50
   maxStacks: 2
+  damage: 10
   abilitySprite: {fileID: 0}
-  effect: {fileID: 3421292615638379270, guid: 06d8bc25d1066bb469bcdd0f95d4a47a, type: 3}
+  effect: {fileID: 0}
   abilitySound: {fileID: 0}
   projectileForce: 500
   projectileToSpawn: {fileID: 712220717463636895, guid: 7879bb11452426b44b8a2ea918fedd8c,
