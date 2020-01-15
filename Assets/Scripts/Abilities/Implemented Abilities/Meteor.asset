@@ -1,0 +1,28 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 76ef7c2970fd73649ae6c6e773b93540, type: 3}
+  m_Name: Meteor
+  m_EditorClassIdentifier: 
+  abilityName: Meteor
+  baseCooldown: 1
+  castTime: 1
+  targetKnockbackForce: 0
+  casterKnockbackForce: 0
+  maxStacks: 1
+  damage: 50
+  abilitySprite: {fileID: 0}
+  effect: {fileID: 0}
+  abilitySound: {fileID: 0}
+  projectileForce: 1000
+  projectileToSpawn: {fileID: 4522024154890881069, guid: deabaa2b6e5883943b5e4ba65da9d984,
+    type: 3}
+  launcher: {fileID: 0}

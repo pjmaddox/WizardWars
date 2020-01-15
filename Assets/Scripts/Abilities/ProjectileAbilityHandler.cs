@@ -15,7 +15,7 @@ public class ProjectileAbilityHandler : MonoBehaviour
     public void Launch(ProjectileAbility ability)
     {
 
-        GameObject cloneProjectile = Instantiate(ability.projectileToSpawn, projectileSpawnPoint.position, transform.rotation);
+        GameObject cloneProjectile = Instantiate(ability.projectileToSpawn, projectileSpawnPoint.position + ability.launchOffSet, transform.rotation);
 
         Rigidbody cloneRB = cloneProjectile.GetComponent<Rigidbody>();
         cloneRB.AddForce(projectileSpawnPoint.transform.forward * ability.projectileForce);
