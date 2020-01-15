@@ -26,3 +26,4 @@ MonoBehaviour:
   projectileToSpawn: {fileID: 4522024154890881069, guid: deabaa2b6e5883943b5e4ba65da9d984,
     type: 3}
   launcher: {fileID: 0}
+  launchOffSet: {x: 0, y: 20, z: 0}
