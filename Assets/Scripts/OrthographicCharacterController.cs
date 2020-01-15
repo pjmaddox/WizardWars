@@ -23,7 +23,7 @@ public class OrthographicCharacterController : MonoBehaviour
         if (Input.anyKey)
         {
             Move();
-        }
+        } 
 
         Debug.DrawRay(transform.position, transform.forward * 2, Color.red);
     }
