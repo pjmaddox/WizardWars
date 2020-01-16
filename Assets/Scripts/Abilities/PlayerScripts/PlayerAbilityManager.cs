@@ -28,14 +28,7 @@ public class PlayerAbilityManager : MonoBehaviour
             RectTransform rt = iconObject.GetComponent<RectTransform>();
             rt.SetInsetAndSizeFromParentEdge(RectTransform.Edge.Left, count * iconSpacing, rt.rect.width);
             rt.SetInsetAndSizeFromParentEdge(RectTransform.Edge.Bottom, 20, rt.rect.width);
-            /*
-            Vector3 iconLocalPos = iconObject.transform.position;
-            iconObject.transform.position.Set(iconLocalPos.x + (count * iconSpacing), iconLocalPos.y, iconLocalPos.z);
-            Debug.Log("Transform for icon is: " + iconObject.transform.position);
-            Debug.Log("Count: " + count);
-            Debug.Log("SPACE: " + iconSpacing * count);
 
-            */
             iconObject.GetComponent<Image>().sprite = ab.abilitySprite;
             iconObject.GetComponentInChildren<Text>().text = ab.abilityName;
 
