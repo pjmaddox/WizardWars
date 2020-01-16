@@ -14,11 +14,20 @@ public class ProjectileAbilityHandler : MonoBehaviour
 
     public void Launch(ProjectileAbility ability)
     {
+        RaycastHit hit;
+        Vector3 targetRotation = transform.forward;
+        if (Physics.Raycast(Camera.main.ScreenPointToRay(Input.mousePosition), out hit, 100f))
+        {
+            targetRotation = hit.point - projectileSpawnPoint.transform.position;
+            targetRotation.Normalize();
+            
 
-        GameObject cloneProjectile = Instantiate(ability.projectileToSpawn, projectileSpawnPoint.position, transform.rotation);
+        }
+
+        GameObject cloneProjectile = Instantiate(ability.projectileToSpawn, projectileSpawnPoint.position + ability.launchOffSet, transform.rotation);
 
         Rigidbody cloneRB = cloneProjectile.GetComponent<Rigidbody>();
-        cloneRB.AddForce(projectileSpawnPoint.transform.forward * ability.projectileForce);
+        cloneRB.AddForce(targetRotation * ability.projectileForce);
         
         Destroy(cloneProjectile, 5f);
 
@@ -40,6 +49,7 @@ public class ProjectileAbilityHandler : MonoBehaviour
         
         //Try to apply damage to thing if it has health
         //Deal OnHit damage
+        // Todo: make sure the ability you make doesn't hit you as it leaves your space!
         var targetHealth = other.gameObject.GetComponent<Health>();
         if(targetHealth != null)
         {
