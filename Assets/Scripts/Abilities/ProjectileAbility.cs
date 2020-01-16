@@ -10,8 +10,9 @@ public class ProjectileAbility : AbilityBase
     public GameObject projectileToSpawn;
     public ProjectileAbilityHandler launcher;
     //public Animator / Animation castAnimation;
-        //Would only cast the ability after the cast time
-    
+    //Would only cast the ability after the cast time
+
+    public Vector3 launchOffSet = new Vector3(0, 0, 0);
 
     private ProjectileAbilityStats projectileStats;
     public override void Initialize(GameObject obj)
