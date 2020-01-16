@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class PlayerAbilityManager : MonoBehaviour
 {
@@ -10,18 +11,35 @@ public class PlayerAbilityManager : MonoBehaviour
     //ToDo: these two would be the alternatives, or creating our own solution, which would be a serializable class of key / value pairs
     public List<string> abilityKeys = new List<string>();
     public List<AbilityBase> abilities = new List<AbilityBase>();
+    public GameObject parentPanel;
+    public GameObject abilityIcon;
 
+
+
+    private float iconSpacing = 120f;
     void Start()
     {
-        /* foreach(KeyValuePair<string, AbilityBase> x in activationKeyToProjectileDictionary)
-         {
-             x.Value.Initialize();
-         }
-         */
-        Debug.Log("123");
+
+        int count = 0;
         foreach(AbilityBase ab in abilities)
         {
             ab.Initialize(this.gameObject);
+            GameObject iconObject = Instantiate(abilityIcon, parentPanel.transform, true) as GameObject;
+            RectTransform rt = iconObject.GetComponent<RectTransform>();
+            rt.SetInsetAndSizeFromParentEdge(RectTransform.Edge.Left, count * iconSpacing, rt.rect.width);
+            rt.SetInsetAndSizeFromParentEdge(RectTransform.Edge.Bottom, 20, rt.rect.width);
+            /*
+            Vector3 iconLocalPos = iconObject.transform.position;
+            iconObject.transform.position.Set(iconLocalPos.x + (count * iconSpacing), iconLocalPos.y, iconLocalPos.z);
+            Debug.Log("Transform for icon is: " + iconObject.transform.position);
+            Debug.Log("Count: " + count);
+            Debug.Log("SPACE: " + iconSpacing * count);
+
+            */
+            iconObject.GetComponent<Image>().sprite = ab.abilitySprite;
+            iconObject.GetComponentInChildren<Text>().text = ab.abilityName;
+
+            count++;
         }
        
     }
