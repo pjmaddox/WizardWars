@@ -11,6 +11,7 @@ public class PlayerHealth : Health
         this.currentHealth = this.maxHealth;
         player = this.GetComponent<PlayerManager>();
         player.onPlayerDeath += DestroyPlayer;
+
     }
 
     private void Awake()

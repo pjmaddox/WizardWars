@@ -19,7 +19,6 @@ public class PlayerAbilityManager : MonoBehaviour
     private float iconSpacing = 120f;
     void Start()
     {
-
         int count = 0;
         foreach(AbilityBase ab in abilities)
         {
