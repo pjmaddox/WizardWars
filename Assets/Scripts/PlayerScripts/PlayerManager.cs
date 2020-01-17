@@ -15,17 +15,11 @@ public class PlayerManager : MonoBehaviour
     //Handlers
     public void HandlePlayerHitByAbility(AbilityBase someAbility)
     {
-        if(onPlayerHit != null)
-        {
-            onPlayerHit(someAbility);
-        }
+        onPlayerHit?.Invoke(someAbility);
     }
 
     public void HandlePlayerDeath()
     {
-        if(onPlayerDeath != null)
-        {
-            onPlayerDeath();
-        }
+        onPlayerDeath?.Invoke();
     }
 }
