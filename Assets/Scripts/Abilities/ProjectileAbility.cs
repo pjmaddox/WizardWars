@@ -21,7 +21,6 @@ public class ProjectileAbility : AbilityBase
         launcher = obj.GetComponent<ProjectileAbilityHandler>();
         launcher.projectileForce = projectileForce;
         launcher.projectile = projectileToSpawn;
-        Debug.Log(this.abilityName + " was just intitialized!");
     }
 
     public override void Activate()

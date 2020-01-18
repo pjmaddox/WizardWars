@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerHealth : Health
+public class PlayerHealth : Health, Assets.Scripts.IHealth
 {
     private PlayerManager player;
 
@@ -28,6 +28,7 @@ public class PlayerHealth : Health
 
     public void HandleAbilityHit(AbilityBase ability)
     {
+        Debug.Log("inside 'handleAbilityHit' in playerHealth");
         this.ChangeHealth(ability.damage);
     }
 

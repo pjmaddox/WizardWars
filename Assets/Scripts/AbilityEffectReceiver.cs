@@ -21,6 +21,10 @@ public class AbilityEffectReceiver : MonoBehaviour
                 var damageEffect = effect as DamageEffect;
                 health.TakeDamage(damageEffect.Damage);
                 break;
+            case AbilityEffect.EffectType.DamageOverTime:
+                var dotEffect = effect as DamageOverTimeEffect;
+                health.TakeDamage(dotEffect.DamagePerSecond * Time.deltaTime);
+                break;
             case AbilityEffect.EffectType.RelativeForce:
                 //ToDo
                 break;

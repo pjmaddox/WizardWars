@@ -17,11 +17,12 @@ public class AuraAbility : AbilityBase
 
     public override void Initialize(GameObject obj)
     {
-        obj.GetComponent<AuraAbilityHandler>();
+        auraGenerator = obj.GetComponent<AuraAbilityHandler>();
     }
 
     public override void Activate()
     {
+        Debug.Log($"{this.abilityName} was triggered!");     
         auraGenerator.GenerateAura(this);
     }
 }

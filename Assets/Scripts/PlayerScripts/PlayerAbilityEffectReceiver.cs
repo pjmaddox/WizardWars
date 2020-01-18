@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using Assets.Scripts;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -6,13 +7,13 @@ using UnityEngine;
 public class PlayerAbilityEffectReceiver : AbilityEffectReceiver
 {
     private PlayerManager manager;
-    private PlayerHealth health;
+    private IHealth playerHealth;
 
     private void Awake()
     {
         this.rb = this.GetComponent<Rigidbody>();
         manager = this.GetComponent<PlayerManager>();
-        health = this.GetComponent<PlayerHealth>();
+        playerHealth = this.GetComponent<PlayerHealth>();
     }
 
     public override void ReceiveEffect(AbilityEffect effect)
@@ -20,13 +21,12 @@ public class PlayerAbilityEffectReceiver : AbilityEffectReceiver
         switch(effect.TypeOfEffect)
         {
             case AbilityEffect.EffectType.Damage:
-                health.TakeDamage(((DamageEffect)effect).Damage);
+                playerHealth.TakeDamage(((DamageEffect)effect).Damage);
                 break;
-            //case AbilityEffect.EffectType.RelativeForce:
-            //    var forceEffect = effect as RelativeForceEffect;
-
-            //    rb.AddForce(forceEffect.);
-            //    break;
+            case AbilityEffect.EffectType.DamageOverTime:
+                Debug.Log("Inside the damage over time ability receiver dealy-do");
+                playerHealth.TakeDamage(((DamageOverTimeEffect)effect).DamagePerSecond * Time.deltaTime);
+                break;
             case AbilityEffect.EffectType.WorldForce:
                 var forceEffect = effect as WorldForceEffect;
                 rb.AddForce(forceEffect.Direction, forceEffect.ForceType);
