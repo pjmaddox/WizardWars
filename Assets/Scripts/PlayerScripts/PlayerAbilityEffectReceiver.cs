@@ -13,7 +13,7 @@ public class PlayerAbilityEffectReceiver : AbilityEffectReceiver
     {
         this.rb = this.GetComponent<Rigidbody>();
         manager = this.GetComponent<PlayerManager>();
-        playerHealth = this.GetComponent<PlayerHealth>();
+        playerHealth = this.GetComponent<IHealth>();
     }
 
     public override void ReceiveEffect(AbilityEffect effect)
@@ -24,7 +24,6 @@ public class PlayerAbilityEffectReceiver : AbilityEffectReceiver
                 playerHealth.TakeDamage(((DamageEffect)effect).Damage);
                 break;
             case AbilityEffect.EffectType.DamageOverTime:
-                Debug.Log("Inside the damage over time ability receiver dealy-do");
                 playerHealth.TakeDamage(((DamageOverTimeEffect)effect).DamagePerSecond * Time.deltaTime);
                 break;
             case AbilityEffect.EffectType.WorldForce:
@@ -36,5 +35,6 @@ public class PlayerAbilityEffectReceiver : AbilityEffectReceiver
         //ToDo...
         //Change ability to effect thing? Or is 'playerhitbyability' a different paradigm? is one better than the other?
         //manager.HandlePlayerHitByAbility(effect);
+        //Change this to player hit by effect ^ ??
     }
 }

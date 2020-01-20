@@ -30,19 +30,23 @@ public class AuraAbilityHandler : MonoBehaviour
             endTime = Time.time + auraInfo.auraDuration
         };
         activeAuras.Add(newAura);
+        Debug.Log($"Generated aura for ability: {newAura.aura.abilityName}");
     }
 
     public void Update()
     {
         var currentTime = Time.time;
         //Remove auras that should have ended
-        activeAuras.RemoveAll(x => x.endTime <= currentTime);
+        var numberOfRemovedAuras = activeAuras.RemoveAll(x => x.endTime <= currentTime);
+        if(numberOfRemovedAuras != 0)
+        {
+            Debug.Log($"Removed {numberOfRemovedAuras} auras this update");
+        }
 
         //Loop through each active aura
         foreach(AuraTrackingInfo ax in activeAuras)
         {
-            //If it is a pulse, check if the corresponding timer is ready
-            if (ax.aura.doesPulse)
+            if (ax.aura.doesPulse) //If it is a pulse, check if the corresponding timer is ready, then apply
             {
                 if (currentTime >= ax.nextPulseActivationTime)
                 {
@@ -50,7 +54,7 @@ public class AuraAbilityHandler : MonoBehaviour
 
                 }
             }
-            else
+            else //Otherwise, apply
             {
                 CheckForEffectedTargetsAndApplyEffects(ax);
             }
@@ -60,15 +64,28 @@ public class AuraAbilityHandler : MonoBehaviour
     private void CheckForEffectedTargetsAndApplyEffects(AuraTrackingInfo ax)
     {
         List<AbilityEffectReceiver> things = new List<AbilityEffectReceiver>();
-        RaycastHit[] hits = Physics.SphereCastAll(myTransform.position, ax.aura.auraRadius, Vector3.zero, 0, LayerMask.NameToLayer("Battle"));
-        if(hits != null)
+        Collider[] hits = Physics.OverlapSphere(myTransform.position, ax.aura.auraRadius);
+
+        if(hits.Length > 0)
         {
+            Debug.Log(hits.Length);
             foreach(var x in hits)
             {
-                var abilityReceiver = x.transform.gameObject.GetComponent<AbilityEffectReceiver>();
+                //When aura finds itself in overlap sphere, check whether or not it should apply to the caster
+                if(x.gameObject == this.gameObject && !ax.aura.doesEffectSelf)
+                {
+                    continue;
+                }
+
+                var abilityReceiver = x.gameObject.GetComponent<AbilityEffectReceiver>();
                 if (abilityReceiver != null)
                 {
                     ApplyAllEffectsToTarget(abilityReceiver, ax.aura.auraEffects);
+
+                    if(ax.aura.doesPulse) //Reset pulse activation time
+                    {
+                        ax.nextPulseActivationTime = Time.time + ax.aura.pulseDelay;
+                    }
                 }
             }
         }

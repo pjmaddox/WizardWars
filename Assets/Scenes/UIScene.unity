@@ -523,6 +523,7 @@ GameObject:
   - component: {fileID: 762576036}
   - component: {fileID: 762576040}
   - component: {fileID: 762576041}
+  - component: {fileID: 762576042}
   m_Layer: 9
   m_Name: CuteP
   m_TagString: Untagged
@@ -629,6 +630,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxHealth: 100
   currentHealth: 0
+--- !u!114 &762576042
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 762576035}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f22066fe973b24147b7d81081b03cb59, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1030639464
 GameObject:
   m_ObjectHideFlags: 0

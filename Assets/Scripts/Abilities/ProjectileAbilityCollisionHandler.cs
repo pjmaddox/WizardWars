@@ -17,7 +17,6 @@ public class ProjectileAbilityCollisionHandler : MonoBehaviour
     {
         if (other.transform.gameObject.layer == LayerMask.NameToLayer("Battle"))
         {
-            Debug.Log("OnCollisionEnter inside ProjectileAbilityCollisionHandler");
             this.onCollisionFunction(other, this.gameObject);
             Destroy(this.gameObject, .25f);
         }

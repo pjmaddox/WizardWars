@@ -28,7 +28,6 @@ public class PlayerHealth : Health, Assets.Scripts.IHealth
 
     public void HandleAbilityHit(AbilityBase ability)
     {
-        Debug.Log("inside 'handleAbilityHit' in playerHealth");
         this.ChangeHealth(ability.damage);
     }
 
