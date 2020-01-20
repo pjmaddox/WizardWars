@@ -11,13 +11,11 @@ public class Health : MonoBehaviour, IHealth
     // Start is called before the first frame update
     void Start()
     {
-        Debug.Log("Hit parent Start()");
         currentHealth = maxHealth;
     }
 
     public void TakeDamage(float amount)
     {
-        Debug.Log("In take damage for Normal Health");
         ChangeHealth(-amount);
     }
 
