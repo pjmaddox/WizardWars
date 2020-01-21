@@ -30,6 +30,13 @@ public class AuraAbilityHandler : MonoBehaviour
             endTime = Time.time + auraInfo.auraDuration
         };
         activeAuras.Add(newAura);
+
+        if(auraInfo.vfx != null)
+        {
+            var effect = Instantiate(auraInfo.vfx, myTransform);
+            Destroy(effect, auraInfo.auraDuration);
+        }
+
         Debug.Log($"Generated aura for ability: {newAura.aura.abilityName}");
     }
 

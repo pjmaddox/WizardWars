@@ -11,6 +11,7 @@ public class AuraAbility : AbilityBase
     public float auraRadius = 2f;
     public AbilityEffect[] auraEffects;
     public bool doesEffectSelf = false;
+    public GameObject vfx;
 
     //For Abilities that pulse. Set to false if the aura is constant while active.
     public bool doesPulse = false;
