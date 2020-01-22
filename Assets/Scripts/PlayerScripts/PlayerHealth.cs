@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerHealth : Health
+public class PlayerHealth : Health, Assets.Scripts.IHealth
 {
     private PlayerManager player;
 
