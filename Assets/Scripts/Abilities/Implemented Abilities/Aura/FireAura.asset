@@ -26,5 +26,8 @@ MonoBehaviour:
   auraRadius: 5
   auraEffects:
   - {fileID: 11400000, guid: 27c36101f2181af47aa033d16c65b3d1, type: 2}
+  - {fileID: 11400000, guid: c4390ce8e0e48f94196c14f865685892, type: 2}
+  doesEffectSelf: 0
+  vfx: {fileID: 7438572212547825775, guid: 1ca388f0e43bccc4283d6061c9c4728d, type: 3}
   doesPulse: 0
   pulseDelay: 0
