@@ -20,9 +20,17 @@ public class OrthographicCharacterController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        //Detect if grounded (Physics.Raycast a set distance downwards)
+        //if(grounded)
+        //Set grounded value
+        //else
+        //Do un-grounded things
+        //check if is jumping?
+
         if (Input.anyKey)
         {
             Move();
+            //Jump
         } 
 
         Debug.DrawRay(transform.position, transform.forward * 2, Color.red);
